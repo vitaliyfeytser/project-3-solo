@@ -1,6 +1,6 @@
 import React from "react"
 
-function Vitaliy () {
+function SignInForm () {
     return (
         <div className="container-fluid " id="formSection">
           <div className="row justify-content-center">
@@ -52,5 +52,5 @@ function Vitaliy () {
     )
 }
 
-export default Vitaliy
+export default SignInForm
 
