@@ -53,55 +53,6 @@ function NavComponent() {
         </>
     );
 
-    //     <>
-    //         <nav className="navbar navbar-dark bg-dark navbar-expand-md">
-    //             <div className="container">
-    //                 <a className="navbar-brand" href="">
-    //                     <img
-    //                         src="./images/logo.svg"
-    //                         width="48px"
-    //                         height="40px"
-    //                         alt="Logo"
-    //                     />
-    //                     <span className="pl-2">COOL KIDS BOOK CLUB</span>
-    //                 </a>
-
-    //                 <button
-    //                     className="navbar-toggler"
-    //                     type="button"
-    //                     data-toggle="collapse"
-    //                     data-target="#navbarNav"
-    //                     aria-controls="navbarNav"
-    //                     aria-expanded="false"
-    //                     aria-label="Toggle navigation"
-    //                 >
-    //                     <span className="navbar-toggler-icon"></span>
-    //                 </button>
-
-    //                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-    //                     <div className="navbar-nav ml-auto">
-
-    //                         <LoginModal />
-
-    // <DropdownButton className="NavBtns" variant="light" id="dropdown-basic-button " title="NAME PLACEHOLDER">
-    //     <Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-    //     <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
-    // </DropdownButton>;
-
-    // <Button
-    //     className="NavBtns"
-    //     variant="light"
-    //     onClick={''}
-    // >HOME
-    // </Button>
-
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </nav>
-    //     </>
-    // );
-
 }
 
 export default NavComponent
