@@ -43,7 +43,9 @@ function NavComponent() {
                         <Button
                             className="NavBtns"
                             variant="light"
-                            onClick={''}
+                            // onClick={''}
+                            href="/"
+                            // style={{display: "flex" , alignContent: "center"}}
                         >HOME
                         </Button>
 

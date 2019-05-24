@@ -27,14 +27,18 @@ class LoginModal extends Component {
   render() {
     return (
       <>
-        <Button className="NavBtns" variant="light" onClick={this.handleShow}>
-          LOG IN
+        <Button
+          lassName="NavBtns"
+          // href="/login"
+          variant="light"
+          onClick={this.handleShow}
+        >LOG IN
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <div style={{ justifyContent: "space-between" }} >
-            <Modal.Title>New to the club?</Modal.Title>
+              <Modal.Title>New to the club?</Modal.Title>
               <Button variant="outline-primary" size="sm" onClick={this.handleClose}>
                 Sign up!
             </Button>

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import './styles/styles.css';
 
@@ -17,16 +17,30 @@ import UserAccountSection from './components/UserAccountSection'
 
 function App() {
   return (
-    <div className="App">
-      
+    <Router>
+      <div>
         <NavComponent />
-        <SignUpForm />
-        <SignInForm />
-        <PromotedSection />
-        <JoinClubSection />
-        <UserAccountSection />
+        <Switch>
 
-    </div>
+          <Route exact path="/" component={PromotedSection} />
+          <Route exact path="/user" component={UserAccountSection} />
+          <Route exact path="/login" component={SignInForm} />
+          <Route exact path="/signUp" component={SignUpForm} />
+
+        </Switch>
+      </div>
+    </Router>
+
+    // <div className="App">
+
+    //   <NavComponent />
+    //   <SignUpForm />
+    //   <SignInForm />
+    //   <PromotedSection />
+    //   <JoinClubSection />
+    //   <UserAccountSection />
+
+    // </div>
   );
 }
 
