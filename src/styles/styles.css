@@ -125,8 +125,8 @@ footer {
 
 
 .jumbotron {
-  padding-top: 2rem !important;
-  padding-bottom: 2rem !important;
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
 }
 
 #mainSection {
@@ -145,7 +145,7 @@ footer {
 
 #accountSection {
   background-color: #307f81;
-  padding: 10% 5%;
+  padding: 5% 5%;
 }
 
 
@@ -162,7 +162,7 @@ hr {
 }
 
 .NavBtns {
-  padding: 0 10px 0 10px;
+  /* padding: 0 10px 0 10px; */
   margin: 0px 5px 0px 5px;
   outline: none !important;
 }

@@ -28,7 +28,7 @@ class LoginModal extends Component {
     return (
       <>
         <Button
-          lassName="NavBtns"
+          className="NavBtns"
           // href="/login"
           variant="light"
           onClick={this.handleShow}

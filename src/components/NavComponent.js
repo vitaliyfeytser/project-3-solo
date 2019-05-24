@@ -41,10 +41,10 @@ function NavComponent() {
                         <LoginModal />
 
                         <Button
+                            href="/"
                             className="NavBtns"
                             variant="light"
                             // onClick={''}
-                            href="/"
                             // style={{display: "flex" , alignContent: "center"}}
                         >HOME
                         </Button>
