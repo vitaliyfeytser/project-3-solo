@@ -14,7 +14,7 @@ function PromotedBook(props) {
             <img
                 className="card-img-top promoted-books-at-top"
                 name="cover"
-                src={props.data.covers[2]}
+                src={props.cover}
                 alt="Holy Bible"
             />
             <div
@@ -23,13 +23,13 @@ function PromotedBook(props) {
                 <h5
                     className="card-title"
                     name="title"
-                >THE ACTION BIBLE
+                >{props.title}
                 </h5>
 
                 <p
                     className="card-text"
                     name="caption"
-                >Finally! From the authors who brought you the "HOLY BIBLE", "SANTA CLAUSE AND RUDOLPH", "GHOSTS ARE REAL, NO - I'M SERIOUS!" comes a story of the Bible Heroes and Devotion! Let's meet up and together color Moses with your favorite set of crayons!
+                >{props.caption}
                 </p>
             </div>
             <div className="card-footer">

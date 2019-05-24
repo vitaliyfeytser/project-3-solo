@@ -16,7 +16,7 @@ function NavComponent() {
     return (
         <>
             <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         src="./images/logo.svg"
                         width="48px"
@@ -32,7 +32,7 @@ function NavComponent() {
                     <Nav>
 
                         <NavDropdown className="NavBtns" variant="light" title="User Name" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
+                            <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="#action/3.4">You joined X bookclubs.</NavDropdown.Item>
