@@ -1,5 +1,6 @@
 import React from "react"
-// import PromotedSection from "./PromotedSection"
+
+import LikeButton from "./LikeButton"
 
 class PromotedBook extends React.Component {
 
@@ -56,17 +57,9 @@ class PromotedBook extends React.Component {
                         // data-placement="top"
                         title="Join This Book Club!"
                     />
-                    <img
-                        className="ml-3 favorInput"
-                        data-book="1"
-                        src="./images/heart.png"
-                        alt="Fav It For Later!"
-                        width="20px"
-                        height="20px"
-                        // data-toggle="tooltip"
-                        // data-placement="top"
-                        title="Fav It For Later!"
-                    />
+
+                    <LikeButton />
+                    
                 </div>
             </div>
         )

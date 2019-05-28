@@ -1,6 +1,7 @@
 import React from "react"
 import PromotedBook from "./PromotedBook";
 import JoinClubSection from "./JoinClubSection";
+import FavedButton from "./FavedButton";
 
 
 class PromotedSection extends React.Component {
@@ -77,6 +78,8 @@ class PromotedSection extends React.Component {
             onToggleClick={this.onToggleClickStatus}
         />)
 
+        // if book is clicked
+        // render joinClubSection
         const clickedToJoin = data.map(book => {
             if (book.clicked === true) {
                 return (
@@ -87,15 +90,13 @@ class PromotedSection extends React.Component {
                         title={book.titles}
                         caption={book.caption}
                     />
-                    )
-                }
+                )
+            }
         })
 
         // console.log("---PromSECTION PROPS: ", this.props)
         console.log("---PromSECTION STATE END: ", this.state)
 
-        // if book is clicked
-        // render joinClubSection
         return (
             <div className="container-fluid" id="mainSection" >
                 <div className="row" id="cardRow">
@@ -104,10 +105,6 @@ class PromotedSection extends React.Component {
 
                             {threePromoted}
                             {clickedToJoin}
-
-                            {/* <button onClick={this.handleClick}>
-                                {this.state.clicked ? 'ON' : 'OFF'}
-                            </button> */}
 
                         </div>
                     </div>
