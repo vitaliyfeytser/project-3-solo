@@ -1,5 +1,10 @@
 import React, { Component } from "react"
 
+import Form from 'react-bootstrap/Form'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Button from 'react-bootstrap/Button';
+
+
 class JoinClubForm extends Component {
     state = {
         firstName: "",
@@ -9,96 +14,75 @@ class JoinClubForm extends Component {
         favColor: "blue"
     }
 
-
     handleChange = (event) => {
         const { name, value, type, checked } = event.target
         type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
     }
 
+    // Take in props in the render function or do an API call to the db for filling out these form options (props is more react-y)
+
     render() {
         return (
-            <div>
+            <Form onSubmit={this.handleSubmit}>
 
                 <div className="jumbotron jumbotron-details">
                     <h1 className="display-3">Join us!</h1>
                     <p className="lead">Choose club details:</p>
                     <div className="accordion" id="accordion">
                         <div className="card">
-                            <div className="card-header" id="headingOne">
-                                <h2 className="mb-0">
-                                    <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                                        aria-expanded="false" aria-controls="collapseOne">
-                                        TIME:
-        </button>
-                                </h2>
-                            </div>
-                            <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                                <div className="card-body">
-                                    <form>
-                                        <div className="form-group">
-                                            <select className="form-control" id="FormControlSelect1">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                    </form>
+
+                            <div className="card-body">
+                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Label className="joinLabel">Locations</Form.Label>
+                                    <Form.Control as="select">
+                                        <option>-- Please Select One --</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </Form.Control>
+                                </Form.Group>
+
+
+
+                                <Form.Group controlId="exampleForm.ControlSelect2">
+                                    <Form.Label className="joinLabel">Meetup Times</Form.Label>
+                                    <Form.Control as="select" multiple>
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </Form.Control>
+                                </Form.Group>
+
+                                <ListGroup>
+                                    <Form.Label className="joinLabel">Current Members</Form.Label>
+                                    <ListGroup.Item>Cras justo odio</ListGroup.Item>
+                                    <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
+                                    <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+                                    <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+                                    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+                                </ListGroup>
+
+                                <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                                    <Button
+                                        style={{ marginTop: "1em", alignSelf: "right" }}
+                                        variant="outline-light"
+                                        size="sm"
+                                        onClick={this.handleClose}
+                                    >Join!
+                                    </Button>
                                 </div>
+
                             </div>
                         </div>
-                        <div className="card">
-                            <div className="card-header" id="headingTwo">
-                                <h2 className="mb-0">
-                                    <button className="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        LOCATION:
-        </button>
-                                </h2>
-                            </div>
-                            <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                                <div className="card-body">
-                                    <form>
-                                        <div className="form-group">
-                                            <select className="form-control" id="FormControlSelect2">
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                            </select>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-header" id="headingThree">
-                                <h2 className="mb-0">
-                                    <button className="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        CURRENT MEMBERS:
-        </button>
-                                </h2>
-                            </div>
-                            <div id="collapseThree" className="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                                <div className="card-body">
-                                    <ul className="list-inline">
-                                        <li className="list-inline-item members-content">Bobbie Joe</li>
-                                        <li className="list-inline-item members-content">Mary Sue</li>
-                                        <li className="list-inline-item members-content">John Smith</li>
-                                        <li className="list-inline-item members-content">Carry Smith</li>
-                                        <li className="list-inline-item members-content">Michael Bolton</li>
-                                        <li className="list-inline-item members-content">Yo Momma</li>
-                                        <li className="list-inline-item members-content">Jesus Himself</li>
-                                        <li className="list-inline-item members-content">LeBron James</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
-                <form onSubmit={this.handleSubmit}>
+                {/* <form onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         value={this.state.firstName}
@@ -114,17 +98,6 @@ class JoinClubForm extends Component {
                         placeholder="Last Name"
                         onChange={this.handleChange}
                     />
-
-                    {
-                        /**
-                         * Other useful form elements:
-                         * 
-                         *  <textarea /> element
-                         *  <input type="checkbox" />
-                         *  <input type="radio" />
-                         *  <select> and <option> elements
-                         */
-                    }
 
                     <textarea
                         value={"Some default value"}
@@ -161,7 +134,7 @@ class JoinClubForm extends Component {
                             onChange={this.handleChange}
                         /> Female
                 </label>
-                    {/* Formik */}
+
                     <br />
 
                     <label>Favorite Color:</label>
@@ -181,9 +154,21 @@ class JoinClubForm extends Component {
                     <h2>You are a {this.state.gender}</h2>
                     <h2>Your favorite color is {this.state.favColor}</h2>
                     <button>Submit</button>
-                </form>
+                </form> */}
 
-            </div>
+
+                {
+                    /**
+                     * Other useful form elements:
+                     * 
+                     *  <textarea /> element
+                     *  <input type="checkbox" />
+                     *  <input type="radio" />
+                     *  <select> and <option> elements
+                     */
+                }
+                {/* Formik */}
+            </Form>
         )
     }
 }

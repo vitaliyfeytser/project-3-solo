@@ -134,7 +134,7 @@ footer {
 }
 
 #detailsSection {
-  padding: 10% 5%;
+  padding: 5% 5%;
   background-color: #869b84;
 }
 
@@ -196,6 +196,10 @@ hr {
 
 .details-column {
   background-color: #f8f9fa;
+}
+
+.joinLabel {
+  color: #a5a6a7;
 }
 
 @media only screen and (max-width: 640px) {
