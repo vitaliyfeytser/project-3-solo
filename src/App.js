@@ -23,6 +23,7 @@ function App() {
         <Switch>
 
           <Route exact path="/" component={PromotedSection} />
+          <Route exact path="/join" component={JoinClubSection} />
           <Route exact path="/user" component={UserAccountSection} />
           <Route exact path="/login" component={SignInForm} />
           <Route exact path="/signUp" component={SignUpForm} />
