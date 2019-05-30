@@ -1,10 +1,6 @@
 import React, { Component } from "react"
 
-import DeleteButton from './DeleteButton'
-
-// import Form from 'react-bootstrap/Form'
-// import ListGroup from 'react-bootstrap/ListGroup'
-// import Button from 'react-bootstrap/Button';
+import DeleteButton from '../Buttons/DeleteButton'
 
 
 class UserActiveClub extends Component {

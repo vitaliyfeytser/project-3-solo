@@ -8,8 +8,8 @@ function JoinClubSection(props) {
 
     <div className="container-fluid" id="detailsSection">
       <div className="row">
-        <div className="col col-md-2 col-lg-3"></div>
-        <div className="col-12 col-md-4 col-lg-3" id="clubDetails">
+        <div className="col col-md-1 col-lg-1"></div>
+        <div className="col-12 col-md-4 col-lg-4" id="clubDetails">
 
           <JoinClubBook
             key={props.id}
@@ -21,12 +21,12 @@ function JoinClubSection(props) {
 
         </div>
 
-        <div className="col-12 col-md-4 col-lg-3">
+        <div className="col-12 col-md-6 col-lg-6">
 
           <JoinClubForm />
 
         </div>
-        <div className="col col-md-2 col-lg-3"></div>
+        <div className="col col-md-1 col-lg-1"></div>
       </div>
     </div>
 

@@ -1,8 +1,6 @@
 import React from "react"
-// import PromotedSection from "./PromotedSection"
 
 class JoinClubBook extends React.Component {
-
     render() {
         // console.log("--- prpomoted books props: ", this.props)
         return (

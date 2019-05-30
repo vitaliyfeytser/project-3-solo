@@ -1,6 +1,6 @@
 import React from "react"
 
-import DeleteButton from './DeleteButton'
+import DeleteButton from '../Buttons/DeleteButton'
 
 import ListGroup from 'react-bootstrap/ListGroup'
 

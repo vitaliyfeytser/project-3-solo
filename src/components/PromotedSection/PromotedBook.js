@@ -1,6 +1,6 @@
 import React from "react"
 
-import LikeButton from "./LikeButton"
+import LikeButton from "../Buttons/LikeButton"
 
 class PromotedBook extends React.Component {
 

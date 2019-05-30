@@ -1,7 +1,7 @@
 import React from "react"
-import PromotedBook from "./PromotedBook";
-import JoinClubSection from "./JoinClubSection";
-import FavedButton from "./FavedButton";
+import PromotedBook from "../PromotedSection/PromotedBook";
+import JoinClubSection from "../JoinClubSection/JoinClubSection";
+
 
 
 class PromotedSection extends React.Component {
@@ -35,7 +35,9 @@ class PromotedSection extends React.Component {
                 faved: false,
                 clicked: false
             },
-        ]
+        ],
+        userEmail: "some@email.com",
+        userName: "Someone Famous"
     }
 
     componentDidMount() {
