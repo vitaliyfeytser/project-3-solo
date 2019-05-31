@@ -6,17 +6,20 @@ import DeleteButton from '../Buttons/DeleteButton'
 class UserActiveClub extends Component {
 
     render() {
+        const data = this.props.members
+        const clubMembers = data.map(member => <li key={member} className="list-inline-item members-content">{member}</li>)
+
         return (
             <div>
 
                 <div className="card mb-3">
                     <div className="row no-gutters">
                         <div className="col-md-4">
-                            <img src="./images/hb.jpeg" className="card-img" alt="Action Bible" />
+                            <img src={this.props.cover} className="card-img" alt="Action Bible" />
                         </div>
                         <div className="col-md-8">
                             <div className="card-body">
-                                <h5 className="card-title mb-0">THE ACTION BIBLE
+                                <h5 className="card-title mb-0">{this.props.title}
                                     
                                     <DeleteButton />
                                     
@@ -28,7 +31,7 @@ class UserActiveClub extends Component {
                                     <h5 className="day">DAY:</h5>
                                 </div>
                                 <div className="col-8">
-                                    <h6 className="day-content">Fridays @ 7pm</h6>
+                                    <h6 className="day-content">{this.props.time}</h6>
                                 </div>
                             </div>
                             <div className="row">
@@ -36,7 +39,7 @@ class UserActiveClub extends Component {
                                     <h5 className="location">LOCATION:</h5>
                                 </div>
                                 <div className="col-8">
-                                    <h6 className="location-content">Starbucks on 5th</h6>
+                                    <h6 className="location-content">{this.props.location}</h6>
                                 </div>
                             </div>
                             <div className="row">
@@ -45,14 +48,9 @@ class UserActiveClub extends Component {
                                 </div>
                                 <div className="col-8">
                                     <ul className="list-inline">
-                                        <li className="list-inline-item members-content">Bobbie Joe</li>
-                                        <li className="list-inline-item members-content">Mary Sue</li>
-                                        <li className="list-inline-item members-content">John Smith</li>
-                                        <li className="list-inline-item members-content">Carry Smith</li>
-                                        <li className="list-inline-item members-content">Michael Bolton</li>
-                                        <li className="list-inline-item members-content">Yo Momma</li>
-                                        <li className="list-inline-item members-content">Jesus Himself</li>
-                                        <li className="list-inline-item members-content">LeBron James</li>
+
+                                        {clubMembers}
+
                                     </ul>
                                 </div>
                             </div>

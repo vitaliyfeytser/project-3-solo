@@ -5,6 +5,40 @@ import JoinClubSection from "../JoinClubSection/JoinClubSection";
 
 class PromotedSection extends React.Component {
 
+    state = {
+        promotedBooks: [
+            {
+                index: 0,
+                id: 1,
+                cover: "./images/hb.jpeg",
+                titles: "First title",
+                caption: "First caption",
+                faved: false,
+                clicked: false
+            },
+            {
+                index: 1,
+                id: 2,
+                cover: "./images/ks.jpeg",
+                titles: "Second title",
+                caption: "Second caption",
+                faved: false,
+                clicked: false
+            },
+            {
+                index: 2,
+                id: 3,
+                cover: "./images/yp.jpeg",
+                titles: "Third title",
+                caption: "Third caption",
+                faved: false,
+                clicked: false
+            },
+        ],
+        userEmail: "some@email.com",
+        userName: "Someone Famous"
+    }
+
     componentDidMount() {
         // !! - WRITE A FETCH FUNCTION TO UPDATE THE STATE WITH ALL OF THE BOOK DATA FROM OUR DB
         // 
@@ -12,7 +46,7 @@ class PromotedSection extends React.Component {
 
     // This function changes the 'clicked' boolean value for the corresponding book in the state object
     onToggleClickStatus = bookid => {
-        const { promotedBooks } = this.props;
+        const { promotedBooks } = this.state;
         const nextBookState = promotedBooks.map(book => {
             if (book.id !== bookid)
                 return {
@@ -24,23 +58,18 @@ class PromotedSection extends React.Component {
                 clicked: !book.clicked
             }
         })
-        this.props.HNBS(nextBookState)
-    }
-
-    // Updates user's active-Club count in the Nav dropdown
-    clubCount = () => {
-
+        this.setState(prevState => ({ promotedBooks: nextBookState }))
     }
 
     render() {
-        // Get promoted books data from the props object
-        const data = this.props.promotedBooks
+        // Get a promoted books data from state
+        const data = this.state.promotedBooks
         // Generate the three promotedBooks at top of promoted section
         const threePromoted = data.map(book => <PromotedBook
             key={book.id}
             id={book.id}
             cover={book.cover}
-            title={book.title}
+            title={book.titles}
             caption={book.caption}
             faved={book.faved}
             clicked={book.clicked}
@@ -48,7 +77,7 @@ class PromotedSection extends React.Component {
             onToggleClick={this.onToggleClickStatus}
         />)
 
-        // If book is clicked pre-render a matching joinClubSection
+        // if book is clicked pre-render a matching joinClubSection
         const clickedToJoin = data.map(book => {
             if (book.clicked === true) {
                 return (
@@ -62,7 +91,7 @@ class PromotedSection extends React.Component {
                 )
             }
         })
-        // Returns everything rendered
+        // displays everything rendered to the screen
         return (
             <div className="container-fluid" id="mainSection" >
                 <div className="row" id="cardRow">
