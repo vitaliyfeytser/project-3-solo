@@ -5,23 +5,23 @@ module.exports = function(sequelize, DataTypes) {
     locationId: DataTypes.INTEGER
   });
 
-  bookClubs.associate = function(models) {
-    // We're saying that a bookClubs should belong to promotedBooks
-    // A bookClubs can't be created without a promotedBooks due to the foreign key constraint
-    bookClubs.belongsTo(models.promotedBooks, {
-      foreignKey: {
-        allowNull: false
-      },
-    });
+  // bookClubs.associate = function(models) {
+  //   // We're saying that a bookClubs should belong to promotedBooks
+  //   // A bookClubs can't be created without a promotedBooks due to the foreign key constraint
+  //   bookClubs.belongsTo(models.promotedBooks, {
+  //     foreignKey: {
+  //       allowNull: false
+  //     },
+  //   });
 
-    // bookClubs.hasMany(models.readers, {
-    //   // onDelete: "cascade"
-    //   constraints: false
-    // });
-    bookClubs.hasMany(models.locations, {
-      onDelete: "cascade"
-    });
-  };
+  //   // bookClubs.hasMany(models.readers, {
+  //   //   // onDelete: "cascade"
+  //   //   constraints: false
+  //   // });
+  //   bookClubs.hasMany(models.locations, {
+  //     onDelete: "cascade"
+  //   });
+  // };
 
   return bookClubs;
 };
