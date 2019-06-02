@@ -9,7 +9,10 @@ import SignInForm from './components/SignInStuff/SignInForm'
 import PromotedSection from './components/PromotedSection/PromotedSection'
 import JoinClubSection from './components/JoinClubSection/JoinClubSection'
 import UserAccountSection from './components/UserAccountSection/UserAccountSection'
+import API from './utils/API';
 
+const moment = require("moment");
+moment().format();
 
 class App extends Component {
 
@@ -154,12 +157,51 @@ class App extends Component {
       },
     ],
     clubCount: 999,
+    promotedBookMonthToDisplay: "06-05-2019",
+    // promotedMonthToDisplay: moment(new Date()).format("MM"),
+    // promotedYearToDisplay: moment(new Date()).format("YYYY"),
+    // handleMonthChange: this.handleMonthChange
+
   }
 
+
   componentDidMount() {
-    // !! - WRITE A FETCH FUNCTION TO UPDATE THE STATE WITH ALL OF THE BOOK DATA FROM OUR DB
-    // 
+    // console.log(this.state.promotedMonthToDisplay)
+    // console.log(this.state.promotedYearToDisplay)
+    // This API call gets all of the promoted books from the database
+
+
+    API.getPromotedBooks()
+      .then(res => {
+        console.log("res.data", res.data)
+        // This array holds all properly formatted promotedBooks objects for state
+        let resData = []
+
+        for (let i = 0; i < res.data.length; i++) {
+          let promoted = {
+            index: res.data[i].id - 1,
+            id: res.data[i].id,
+            cover: res.data[i].coverImage,
+            title: res.data[i].title,
+            caption: res.data[i].caption,
+            monthPromoted: res.data[i].monthAndYearPromoted,
+            // monthPromoted: res.data[i].monthAndYearPromoted.slice(0, 2),
+            // yearPromoted: res.data[i].monthAndYearPromoted.slice(3, 7),
+            faved: false,
+            clicked: false
+          }
+          resData.push(promoted)
+        }
+        console.log("resData", resData)
+
+        this.setState({
+          promotedBooks: resData,
+        });
+      });
+    // Adjust prop data sent to PromotedSection component to only contain the three book objects corresponding to monthToDisplya const
+
   }
+
 
   // This function changes the 'clicked' boolean value for the corresponding book in the state object
   handleNextBookState = nextState => {
@@ -170,11 +212,31 @@ class App extends Component {
 
   }
 
+  handleMonthChange = () => {
+    console.log("before: ", this.state.promotedBookMonthToDisplay)
+
+    let month = moment(this.state.promotedBookMonthToDisplay).subtract(1, 'month').format('MM-DD-YYYY')
+
+    this.setState(prevState => ({
+      promotedMonthToDisplay: month,
+      // promotedYearToDisplay: year
+    }))
+
+    console.log("after: ", this.state.promotedBookMonthToDisplay)
+  }
+
+
   render() {
+
+    // console.log("handleMonthChange: ", this.handleMonthChange)
+
     return (
       <Router>
         <div>
-          <NavComponent activeClubs={this.state.activeClubs} />
+          <NavComponent
+            state={this.state}
+            handleMonthChange={this.handleMonthChange}
+          />
           <Switch>
 
             <Route
@@ -199,7 +261,7 @@ class App extends Component {
                   {...routeProps}
                   activeClubs={this.state.activeClubs}
                   favedBooks={this.state.favedBooks}
-                  // HNBS={this.handleNextBookState}
+                // HNBS={this.handleNextBookState}
                 />
               )}
             />

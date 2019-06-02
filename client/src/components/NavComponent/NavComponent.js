@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -7,13 +7,14 @@ import Button from 'react-bootstrap/Button';
 
 import LoginModal from '../SignInStuff/LoginModal';
 import SignUpModal from '../SignInStuff/SignUpModal';
+import MonthNav from '../NavComponent/MonthNav';
 
 
 class NavComponent extends Component {
 
     render() {
         console.log("clubCountDiv: ", this.props)
-        const clubCountDiv = <div style={{display: "flex", flexDirection: "row"}}>You joined <div style={{fontWeight: "bold", margin: "0em .25em"}}>{this.props.activeClubs.length}</div> bookclubs</div>
+        const clubCountDiv = <div style={{ display: "flex", flexDirection: "row" }}>You joined <div style={{ fontWeight: "bold", margin: "0em .25em" }}>{this.props.state.activeClubs.length}</div> bookclubs</div>
 
         return (
             <>
@@ -30,9 +31,14 @@ class NavComponent extends Component {
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
 
+                            <MonthNav
+                                month={this.props.state.promotedMonthToDisplay}
+                                year={this.props.state.promotedYearToDisplay}
+                                handleMonthChange={this.props.handleMonthChange}
+                            />
+
                         </Nav>
                         <Nav>
-
                             <NavDropdown className="NavBtns" variant="light" title="User Name" id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
@@ -40,7 +46,7 @@ class NavComponent extends Component {
                                 <NavDropdown.Item
                                     href="/user"
                                 >{clubCountDiv}
-                            </NavDropdown.Item>
+                                </NavDropdown.Item>
                             </NavDropdown>
 
                             <SignUpModal />
