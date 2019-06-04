@@ -8,27 +8,31 @@ moment().format();
 
 class MonthNav extends Component {
 
+    onClick(params) {
+        this.props.handleMonthChange(params)
+    }
     render() {
-        console.log("MonthNav props: ", this.props)
+        console.log("--------MonthNav props: ", this.props)
         // console.log("MonthNav props handleMonthChange: ", this.props.handleMonthChange)
+        console.log("!!!!! - this.props.month: ", this.props.month)
 
         return (
             <>
                 <ButtonGroup aria-label="Basic example">
                     <Button
                         variant="secondary"
-                        onClick={() => this.props.handleMonthChange("prev")}
+                        onClick={() => this.onClick("prev")}
                     >
                         <i className="fas fa-angle-left"></i>
                     </Button>
                     <Button
                         variant="secondary"
-                        onClick={() => this.props.handleMonthChange("now")}
-                    >{moment(this.props.promotedBookMonthToDisplay).format('MM-DD-YYYY')}
+                        onClick={() => this.onClick("now")}
+                    >{moment(this.props.month).format('MMMM YYYY')}
                     </Button>
                     <Button
                         variant="secondary"
-                        onClick={() => this.props.handleMonthChange("next")}
+                        onClick={() => this.onClick("next")}
                         value=">">
                         <i className="fas fa-angle-right"></i>
                     </Button>

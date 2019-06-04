@@ -28,9 +28,9 @@ class PromotedSection extends React.Component {
     }
 
     render() {
-
         // Get promoted books data from the props object
         const data = this.props.displayThreePromoted
+        console.log("data", data)
         // Generate the three displayThreePromoted at top of promoted section
         const threePromoted = data.map(book => <PromotedBook
             key={book.id}

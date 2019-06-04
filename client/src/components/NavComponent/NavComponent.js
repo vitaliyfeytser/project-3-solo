@@ -36,6 +36,7 @@ class NavComponent extends Component {
                                 month={this.props.state.promotedBookMonthToDisplay}
                                 // year={this.props.state.promotedYearToDisplay}
                                 handleMonthChange={this.props.handleMonthChange}
+                                handleThreePromoted={this.props.handleThreePromoted}
                                 viewState={this.props}
                             />
 

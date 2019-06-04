@@ -193,10 +193,6 @@ class App extends Component {
         clicked: false
       }
     ]
-    // promotedMonthToDisplay: moment(new Date()).format("MM"),
-    // promotedYearToDisplay: moment(new Date()).format("YYYY"),
-    // handleMonthChange: this.handleMonthChange
-
   }
 
   componentDidMount() {
@@ -227,7 +223,7 @@ class App extends Component {
         this.setState({
           promotedBooks: resData,
         });
-        
+
         this.handleThreePromoted()
       });
     // Adjust prop data sent to PromotedSection component to only contain the three book objects corresponding to monthToDisplya const
@@ -248,13 +244,10 @@ class App extends Component {
       // console.log("------this.state.promotedBookMonthToDisplay", this.state.promotedBookMonthToDisplay)
       // console.log("------this.viewThreePromoted", this.viewThreePromoted)
     }
-    // console.log("------viewThreePromoted", this.viewThreePromoted)
-    // console.log("------this.state.promotedBooks.length", this.state.promotedBooks.length)
-
     this.setState({
       displayThreePromoted: this.viewThreePromoted,
     });
-
+    this.viewThreePromoted = []
   }
 
   // This function changes the 'clicked' boolean value for the corresponding book in the state object
@@ -272,17 +265,20 @@ class App extends Component {
       console.log("-----prev")
     }
     else if (arg === "now") {
-      month = moment(new Date()).format('MM-01-YYYY')
+      let date = new Date(), y = date.getFullYear(), m = date.getMonth()
+      let firstDay = new Date(y, m, 1)
+      month = moment(firstDay).format('MM-DD-YYYY')
       // month = moment().startOf('month').format('MM-DD-YYYY');
+      console.log("-----month", month)
       console.log("-----now")
     }
     else if (arg === "next") {
       month = moment(this.state.promotedBookMonthToDisplay).add(1, 'month').format('MM-DD-YYYY')
       console.log("-----next")
     }
-    this.setState(prevState => ({
+    this.setState({
       promotedBookMonthToDisplay: month,
-    }))
+    }, this.handleThreePromoted)
 
     console.log("after: ", this.state.promotedBookMonthToDisplay)
   }
@@ -298,6 +294,7 @@ class App extends Component {
           <NavComponent
             state={this.state}
             handleMonthChange={this.handleMonthChange}
+            handleThreePromoted={this.handleThreePromoted}
           />
           <Switch>
 
