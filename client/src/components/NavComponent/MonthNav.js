@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
+const moment = require("moment");
+moment().format();
 
 class MonthNav extends Component {
 
@@ -15,12 +17,21 @@ class MonthNav extends Component {
                 <ButtonGroup aria-label="Basic example">
                     <Button
                         variant="secondary"
-                        onClick={this.props.handleMonthChange}
+                        onClick={() => this.props.handleMonthChange("prev")}
                     >
                         <i className="fas fa-angle-left"></i>
                     </Button>
-                    <Button variant="secondary">Moth and Year</Button>
-                    <Button variant="secondary" value=">"><i className="fas fa-angle-right"></i></Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => this.props.handleMonthChange("now")}
+                    >{moment(this.props.promotedBookMonthToDisplay).format('MM-DD-YYYY')}
+                    </Button>
+                    <Button
+                        variant="secondary"
+                        onClick={() => this.props.handleMonthChange("next")}
+                        value=">">
+                        <i className="fas fa-angle-right"></i>
+                    </Button>
                 </ButtonGroup>
             </>
         )

@@ -24,6 +24,7 @@ class App extends Component {
         cover: "./images/hb.jpeg",
         title: "First title",
         caption: "First caption",
+        monthPromoted: "06-05-2019",
         faved: false,
         clicked: false
       },
@@ -33,6 +34,7 @@ class App extends Component {
         cover: "./images/ks.jpeg",
         title: "Second title",
         caption: "Second caption",
+        monthPromoted: "06-05-2019",
         faved: false,
         clicked: false
       },
@@ -42,9 +44,10 @@ class App extends Component {
         cover: "./images/yp.jpeg",
         title: "Third title",
         caption: "Third caption",
+        monthPromoted: "06-05-2019",
         faved: false,
         clicked: false
-      },
+      }
     ],
     favedBooks: [
       {
@@ -157,20 +160,47 @@ class App extends Component {
       },
     ],
     clubCount: 999,
-    promotedBookMonthToDisplay: "06-05-2019",
+    promotedBookMonthToDisplay: "06-01-2019",
+    displayThreePromoted: [
+      {
+        index: 0,
+        id: 1,
+        cover: "./images/hb.jpeg",
+        title: "First title",
+        caption: "First caption",
+        monthPromoted: "06-05-2019",
+        faved: false,
+        clicked: false
+      },
+      {
+        index: 1,
+        id: 2,
+        cover: "./images/ks.jpeg",
+        title: "Second title",
+        caption: "Second caption",
+        monthPromoted: "06-05-2019",
+        faved: false,
+        clicked: false
+      },
+      {
+        index: 2,
+        id: 3,
+        cover: "./images/yp.jpeg",
+        title: "Third title",
+        caption: "Third caption",
+        monthPromoted: "06-05-2019",
+        faved: false,
+        clicked: false
+      }
+    ]
     // promotedMonthToDisplay: moment(new Date()).format("MM"),
     // promotedYearToDisplay: moment(new Date()).format("YYYY"),
     // handleMonthChange: this.handleMonthChange
 
   }
 
-
   componentDidMount() {
-    // console.log(this.state.promotedMonthToDisplay)
-    // console.log(this.state.promotedYearToDisplay)
     // This API call gets all of the promoted books from the database
-
-
     API.getPromotedBooks()
       .then(res => {
         console.log("res.data", res.data)
@@ -197,29 +227,61 @@ class App extends Component {
         this.setState({
           promotedBooks: resData,
         });
+        
+        this.handleThreePromoted()
       });
     // Adjust prop data sent to PromotedSection component to only contain the three book objects corresponding to monthToDisplya const
 
   }
 
+  viewThreePromoted = []
+
+  handleThreePromoted = () => {
+    // take promotedBookMonthToDisplay state
+    // filter through promotedBooks for this date
+    // set seperate state view branch and pass as prop
+
+    for (let i = 0; i < this.state.promotedBooks.length; i++) {
+      this.state.promotedBooks[i].monthPromoted === this.state.promotedBookMonthToDisplay ? this.viewThreePromoted.push(this.state.promotedBooks[i]) : console.log("not promoted")
+
+      // console.log("------this.state.promotedBooks[i].monthPromoted", this.state.promotedBooks[i].monthPromoted)
+      // console.log("------this.state.promotedBookMonthToDisplay", this.state.promotedBookMonthToDisplay)
+      // console.log("------this.viewThreePromoted", this.viewThreePromoted)
+    }
+    // console.log("------viewThreePromoted", this.viewThreePromoted)
+    // console.log("------this.state.promotedBooks.length", this.state.promotedBooks.length)
+
+    this.setState({
+      displayThreePromoted: this.viewThreePromoted,
+    });
+
+  }
 
   // This function changes the 'clicked' boolean value for the corresponding book in the state object
   handleNextBookState = nextState => {
-    this.setState(prevState => ({ promotedBooks: nextState }))
+    this.setState(prevState => ({ displayThreePromoted: nextState }))
   }
 
-  handleClubCount = () => {
+  // This function sets the month to display in promotedSection component
+  handleMonthChange = (arg) => {
+    // let monthNav = arg
+    let month
 
-  }
-
-  handleMonthChange = () => {
-    console.log("before: ", this.state.promotedBookMonthToDisplay)
-
-    let month = moment(this.state.promotedBookMonthToDisplay).subtract(1, 'month').format('MM-DD-YYYY')
-
+    if (arg === "prev") {
+      month = moment(this.state.promotedBookMonthToDisplay).subtract(1, 'month').format('MM-DD-YYYY')
+      console.log("-----prev")
+    }
+    else if (arg === "now") {
+      month = moment(new Date()).format('MM-01-YYYY')
+      // month = moment().startOf('month').format('MM-DD-YYYY');
+      console.log("-----now")
+    }
+    else if (arg === "next") {
+      month = moment(this.state.promotedBookMonthToDisplay).add(1, 'month').format('MM-DD-YYYY')
+      console.log("-----next")
+    }
     this.setState(prevState => ({
-      promotedMonthToDisplay: month,
-      // promotedYearToDisplay: year
+      promotedBookMonthToDisplay: month,
     }))
 
     console.log("after: ", this.state.promotedBookMonthToDisplay)
@@ -245,7 +307,7 @@ class App extends Component {
               render={(routeProps) => (
                 <PromotedSection
                   {...routeProps}
-                  promotedBooks={this.state.promotedBooks}
+                  displayThreePromoted={this.state.displayThreePromoted}
                   HNBS={this.handleNextBookState}
                 />
               )}
@@ -261,7 +323,6 @@ class App extends Component {
                   {...routeProps}
                   activeClubs={this.state.activeClubs}
                   favedBooks={this.state.favedBooks}
-                // HNBS={this.handleNextBookState}
                 />
               )}
             />

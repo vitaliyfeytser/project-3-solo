@@ -5,15 +5,10 @@ import JoinClubSection from "../JoinClubSection/JoinClubSection";
 
 class PromotedSection extends React.Component {
 
-    componentDidMount() {
-        // !! - WRITE A FETCH FUNCTION TO UPDATE THE STATE WITH ALL OF THE BOOK DATA FROM OUR DB
-        // 
-    }
-
     // This function changes the 'clicked' boolean value for the corresponding book in the state object
     onToggleClickStatus = bookid => {
-        const { promotedBooks } = this.props;
-        const nextBookState = promotedBooks.map(book => {
+        const { displayThreePromoted } = this.props;
+        const nextBookState = displayThreePromoted.map(book => {
             if (book.id !== bookid)
                 return {
                     ...book,
@@ -33,9 +28,10 @@ class PromotedSection extends React.Component {
     }
 
     render() {
+
         // Get promoted books data from the props object
-        const data = this.props.promotedBooks
-        // Generate the three promotedBooks at top of promoted section
+        const data = this.props.displayThreePromoted
+        // Generate the three displayThreePromoted at top of promoted section
         const threePromoted = data.map(book => <PromotedBook
             key={book.id}
             id={book.id}

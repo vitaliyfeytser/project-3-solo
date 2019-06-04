@@ -14,6 +14,7 @@ class NavComponent extends Component {
 
     render() {
         console.log("clubCountDiv: ", this.props)
+        console.log("promotedMonthToDisplay: ", this.props.state.promotedBookMonthToDisplay)
         const clubCountDiv = <div style={{ display: "flex", flexDirection: "row" }}>You joined <div style={{ fontWeight: "bold", margin: "0em .25em" }}>{this.props.state.activeClubs.length}</div> bookclubs</div>
 
         return (
@@ -32,9 +33,10 @@ class NavComponent extends Component {
                         <Nav className="mr-auto">
 
                             <MonthNav
-                                month={this.props.state.promotedMonthToDisplay}
-                                year={this.props.state.promotedYearToDisplay}
+                                month={this.props.state.promotedBookMonthToDisplay}
+                                // year={this.props.state.promotedYearToDisplay}
                                 handleMonthChange={this.props.handleMonthChange}
+                                viewState={this.props}
                             />
 
                         </Nav>
