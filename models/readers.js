@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     ageRange: DataTypes.STRING,
     bio: DataTypes.TEXT,
     email: DataTypes.TEXT,
-    password: DataTypes.TEXT,
+    pass: DataTypes.TEXT,
   });
 
   // Readers.associate = function(models) {
