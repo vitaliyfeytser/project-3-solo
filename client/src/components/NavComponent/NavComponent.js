@@ -55,6 +55,7 @@ class NavComponent extends Component {
                             <SignUpModal />
                             <LoginModal 
                                 readers={this.props.state.readers}
+                                handleLogin={this.props.handleLogin}
                             />
 
                             <Button

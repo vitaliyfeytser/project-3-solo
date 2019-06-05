@@ -52,6 +52,9 @@ class LoginModal extends Component {
     for (let i = 0; i < this.props.readers.length; i++) {
       if (email === this.props.readers[i].email && password === this.props.readers[i].password) {
         // write a func in App.js to set isLoggedIn to true and User name and email to state
+        let name = this.props.readers[i].firstName + ' ' + this.props.readers[i].lastName
+        let email = this.props.readers[i].email
+        this.props.handleLogin(name, email)
       }
     }
     // console.log("resData", resData)

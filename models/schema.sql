@@ -14,26 +14,27 @@ create table readers
 	ageRange varchar(50) NOT NULL,
     bio varchar(500),
     email varchar(100),
+    password varchar(100),
     createdAt datetime, 
     updatedAt datetime,
 	PRIMARY KEY (id)
 );
 
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Kristal", "Murphy", "Sacramento", "CA", "female", "0", "A short bio.", "iknow@mystuff.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Tyler", "Niccols", "Sacramento", "CA", "male", "0", "A short bio.", "awesomecoder@youknowthis.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Vitaliy", "Feytser", "Sacramento", "CA", "male", "0", "A short bio.", "theukrainetrain@muzhik.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Alex", "Tardif", "Sacramento", "CA", "male", "0", "A short bio.", "myfrontendisbetter@thanyours.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Patrick", "Thompson", "Sacramento", "CA", "male", "0", "A short bio.", "pt@alongfortheride.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Captain", "Marvel", "Sacramento", "CA", "female", "0", "A short bio.", "badmamajama@marvel.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Wonder", "Wonder", "Sacramento", "CA", "female", "0", "A short bio.", "imawonder@dc.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Billy", "Gruff", "Sacramento", "CA", "male", "0", "A short bio.", "thegoat@gruff.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Joe", "Bob", "Sacramento", "CA", "male", "0", "A short bio.", "jb@redneck.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Super", "Man", "Sacramento", "CA", "male", "0", "A short bio.", "imsuper@dc.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Aunt", "Sally", "Sacramento", "CA", "female", "0", "A short bio.", "icanhelp@withalgebra.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Bille", "Jean", "Sacramento", "CA", "female", "0", "A short bio.", "bj@notmylover.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Mark", "Morris", "Sacramento", "CA", "male", "0", "A short bio.", "onehit@wonder.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Leo", "Qiu", "Sacramento", "CA", "male", "0", "A short bio.", "leo@goesger.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
-INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, createdAt, updatedAt) VALUES ("Mark", "Davis", "Sacramento", "CA", "male", "0", "A short bio.", "thehead@raider.com", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Kristal", "Murphy", "Sacramento", "CA", "female", "0", "A short bio.", "iknow@mystuff.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Tyler", "Niccols", "Sacramento", "CA", "male", "0", "A short bio.", "awesomecoder@youknowthis.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Vitaliy", "Feytser", "Sacramento", "CA", "male", "0", "A short bio.", "theukrainetrain@muzhik.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Alex", "Tardif", "Sacramento", "CA", "male", "0", "A short bio.", "myfrontendisbetter@thanyours.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Patrick", "Thompson", "Sacramento", "CA", "male", "0", "A short bio.", "pt@alongfortheride.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Captain", "Marvel", "Sacramento", "CA", "female", "0", "A short bio.", "badmamajama@marvel.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Wonder", "Wonder", "Sacramento", "CA", "female", "0", "A short bio.", "imawonder@dc.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Billy", "Gruff", "Sacramento", "CA", "male", "0", "A short bio.", "thegoat@gruff.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Joe", "Bob", "Sacramento", "CA", "male", "0", "A short bio.", "jb@redneck.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Super", "Man", "Sacramento", "CA", "male", "0", "A short bio.", "imsuper@dc.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Aunt", "Sally", "Sacramento", "CA", "female", "0", "A short bio.", "icanhelp@withalgebra.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Bille", "Jean", "Sacramento", "CA", "female", "0", "A short bio.", "bj@notmylover.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Mark", "Morris", "Sacramento", "CA", "male", "0", "A short bio.", "onehit@wonder.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Leo", "Qiu", "Sacramento", "CA", "male", "0", "A short bio.", "leo@goesger.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
+INSERT INTO readers (firstName, lastName, city, stateUS, gender, ageRange, bio, email, password, createdAt, updatedAt) VALUES ("Mark", "Davis", "Sacramento", "CA", "male", "0", "A short bio.", "thehead@raider.com", "password", "2019-04-06 22:18:59", "2019-04-06 22:18:59");
 
 create table locations
 (

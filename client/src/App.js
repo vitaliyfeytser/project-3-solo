@@ -164,7 +164,7 @@ class App extends Component {
     isLoggedIn: true,
     loggedInName: "Bataliy Feystermeyster",
     loggedInEmail: "bataliy@faster.com",
-    
+
     clubCount: 999,
     promotedBookMonthToDisplay: "06-01-2019",
     displayThreePromoted: [
@@ -246,8 +246,15 @@ class App extends Component {
 
   }
 
-  viewThreePromoted = []
+  handleLogin = (reader, email) => {
+    this.setState(prevState => ({ 
+      isLoggedIn: true,
+      loggedInName: reader,
+      loggedInEmail: email,
+    }))
+  }
 
+  viewThreePromoted = []
   handleThreePromoted = () => {
     // take promotedBookMonthToDisplay state
     // filter through promotedBooks for this date
@@ -307,6 +314,7 @@ class App extends Component {
         <div>
           <NavComponent
             state={this.state}
+            handleLogin={this.handleLogin}
             handleMonthChange={this.handleMonthChange}
             handleThreePromoted={this.handleThreePromoted}
           />
