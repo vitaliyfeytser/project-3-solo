@@ -1,19 +1,31 @@
 import axios from "axios";
 
 export default {
-  // Gets all posts
+  // Gets all promotedBooks
   getPromotedBooks: function() {
-    return axios.get("/api/books");
+    return axios.get("/api/promotedBooks");
+  },
+  // Gets all BookClubs
+  getBookClubs: function() {
+    return axios.get("/api/bookClubs");
+  },
+  // Gets all Readers
+  getReaders: function() {
+    return axios.get("/api/readers");
   },
   createPost: function(data) {
     return axios.post("/api/posts", data);
   },
-  register: function(data) {
-    return axios.post("/api/user/register", data);
+
+  // SignUp and Login
+  signUp: function(data) {
+    return axios.post("/api/readers/signup", data);
   },
   login: function(data) {
-    return axios.post("/api/user/login", data);
+    return axios.post("/api/readers/:email", data);
   },
+
+
   dashboard: function(data) {
     return axios.post("/api/user/dashboard", data);
   },

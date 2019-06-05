@@ -13,7 +13,7 @@ import MonthNav from '../NavComponent/MonthNav';
 class NavComponent extends Component {
 
     render() {
-        console.log("clubCountDiv: ", this.props)
+        console.log("NavComponent props: ", this.props)
         console.log("promotedMonthToDisplay: ", this.props.state.promotedBookMonthToDisplay)
         const clubCountDiv = <div style={{ display: "flex", flexDirection: "row" }}>You joined <div style={{ fontWeight: "bold", margin: "0em .25em" }}>{this.props.state.activeClubs.length}</div> bookclubs</div>
 
@@ -53,7 +53,9 @@ class NavComponent extends Component {
                             </NavDropdown>
 
                             <SignUpModal />
-                            <LoginModal />
+                            <LoginModal 
+                                readers={this.props.state.readers}
+                            />
 
                             <Button
                                 href="/"

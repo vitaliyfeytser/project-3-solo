@@ -159,6 +159,12 @@ class App extends Component {
           ]
       },
     ],
+    readers: [],
+
+    isLoggedIn: true,
+    loggedInName: "Bataliy Feystermeyster",
+    loggedInEmail: "bataliy@faster.com",
+    
     clubCount: 999,
     promotedBookMonthToDisplay: "06-01-2019",
     displayThreePromoted: [
@@ -223,10 +229,20 @@ class App extends Component {
         this.setState({
           promotedBooks: resData,
         });
-
         this.handleThreePromoted()
       });
-    // Adjust prop data sent to PromotedSection component to only contain the three book objects corresponding to monthToDisplya const
+    // This API call gets all of the readers from the database
+    API.getReaders()
+      .then(res => {
+        // This object holds all properly formatted readers for state
+        let resData = res.data
+        console.log("readers resData", resData)
+
+        this.setState({
+          readers: resData,
+        });
+        // this.handleThreePromoted()
+      });
 
   }
 
@@ -257,7 +273,7 @@ class App extends Component {
 
   // This function sets the month to display in promotedSection component
   handleMonthChange = (arg) => {
-    // let monthNav = arg
+
     let month
 
     if (arg === "prev") {
@@ -268,8 +284,6 @@ class App extends Component {
       let date = new Date(), y = date.getFullYear(), m = date.getMonth()
       let firstDay = new Date(y, m, 1)
       month = moment(firstDay).format('MM-DD-YYYY')
-      // month = moment().startOf('month').format('MM-DD-YYYY');
-      console.log("-----month", month)
       console.log("-----now")
     }
     else if (arg === "next") {
