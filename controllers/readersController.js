@@ -10,16 +10,16 @@ module.exports = {
     // res.end();
   },
   findByEmail: function (req, res) {
-    db.readers.findAll({
-      where: {
-        email: req.params.email
-      }
-    })
-      .then(function (results) {
-        console.log("----req.params: ", req.params)
-        console.log("----response: ", res.json(results))
-        return res.json(results);
-      });
+    // db.readers.findAll({
+    //   where: {
+    //     email: req.params.email
+    //   }
+    // })
+    //   .then(function (results) {
+    //     console.log("----req.params: ", req.params)
+    //     console.log("----response: ", res.json(results))
+    //     return res.json(results);
+    //   });
 
   },
   findById: function (req, res) {

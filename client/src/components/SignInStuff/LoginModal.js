@@ -20,7 +20,8 @@ class LoginModal extends Component {
     message: "Welcome back!",
     email: "email",
     password: "password",
-    error: "null"
+    error: "null",
+    readers: []
   };
 
   // }
@@ -34,30 +35,51 @@ class LoginModal extends Component {
   }
 
   componentDidMount = () => {
-    // const token = localStorage.getItem("current_user_token");
-
-    // if (token) {
-    //   API.validateToken(token)
-    //     .then(() => this.props.history.push("/Dashboard"))
-    //     .catch(() => localStorage.removeItem("current_user_token"));
-    // }
+    this.setState({ readers: this.props.readers });
+    console.log("????????? - componentDidMount props:", this.props)
   }
 
-  onSubmit = e => {
-    e.preventDefault();
 
-    let email = [this.state.email ]
-    let password = [this.state.password]
+  // viewThreePromoted = []
+  // handleThreePromoted = () => {
+  //   // take promotedBookMonthToDisplay state
+  //   // filter through promotedBooks for this date
+  //   // set seperate state view branch and pass as prop
+
+  //   for (let i = 0; i < this.state.promotedBooks.length; i++) {
+  //     this.state.promotedBooks[i].monthPromoted === this.state.promotedBookMonthToDisplay ? this.viewThreePromoted.push(this.state.promotedBooks[i]) : console.log("not promoted")
+  //   }
+  //   this.setState({
+  //     displayThreePromoted: this.viewThreePromoted,
+  //   });
+  //   // Empty this array before next nav click
+  //   this.viewThreePromoted = []
+  // }
+
+  handleCredential = (e) => {
+    e.preventDefault();
+    console.log("Login handleCredential", this.props)
+    
+    let email = this.state.email
+    let password = this.state.password
+
+    let name
+    let dbEmail
+
+
     
     for (let i = 0; i < this.props.readers.length; i++) {
-      if (email === this.props.readers[i].email && password === this.props.readers[i].password) {
+      console.log("--- forloop running ---")
+
+      if (email === this.props.readers[i].email && password === this.props.readers[i].pass) {
         // write a func in App.js to set isLoggedIn to true and User name and email to state
-        let name = this.props.readers[i].firstName + ' ' + this.props.readers[i].lastName
-        let email = this.props.readers[i].email
-        this.props.handleLogin(name, email)
+        console.log("--- We found a MATCH!!! ---")
+        name = this.props.readers[i].firstName + ' ' + this.props.readers[i].lastName
+        dbEmail = this.props.readers[i].email
       }
     }
-    // console.log("resData", resData)
+    this.props.handleLogin(name, dbEmail)
+    console.log("Login handleCredential props:", this.props)
 
     // this.setState({
     //   promotedBooks: resData,
@@ -74,6 +96,10 @@ class LoginModal extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
+    console.log("!!! ------ handleCredential this.props: ", this.props)
+    console.log("!!! ------ this.props.readers[0]: ", this.props.readers[0])
+    // console.log("!!! ------ this.props.readers[0]: ", [this][props][readers][0])
+    console.log("!!! ------ this.props.readers.length: ", this.props.readers.length)
     return (
       <>
         <Button
@@ -146,7 +172,7 @@ class LoginModal extends Component {
                   variant="secondary"
                   type="submit"
                   size="sm"
-                  onChange={this.onChange}
+                  onClick={this.handleCredential}
                 >Submit
               </Button>
                 OR
@@ -154,7 +180,7 @@ class LoginModal extends Component {
                   style={{ marginLeft: "1em" }}
                   variant="outline-secondary"
                   size="sm"
-                  onSubmit={this.onSubmit}
+                  onSubmit={this.handleCredential}
                 >
                   Sign up!
             </Button>

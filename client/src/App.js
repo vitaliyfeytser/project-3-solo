@@ -201,57 +201,90 @@ class App extends Component {
     ]
   }
 
+  
+  
+  
   componentDidMount() {
-    // This API call gets all of the promoted books from the database
-    API.getPromotedBooks()
-      .then(res => {
-        console.log("res.data", res.data)
-        // This array holds all properly formatted promotedBooks objects for state
-        let resData = []
+   
+    this.getPromoted();
 
-        for (let i = 0; i < res.data.length; i++) {
-          let promoted = {
-            index: res.data[i].id - 1,
-            id: res.data[i].id,
-            cover: res.data[i].coverImage,
-            title: res.data[i].title,
-            caption: res.data[i].caption,
-            monthPromoted: res.data[i].monthAndYearPromoted,
-            // monthPromoted: res.data[i].monthAndYearPromoted.slice(0, 2),
-            // yearPromoted: res.data[i].monthAndYearPromoted.slice(3, 7),
-            faved: false,
-            clicked: false
-          }
-          resData.push(promoted)
-        }
-        console.log("resData", resData)
-
-        this.setState({
-          promotedBooks: resData,
-        });
-        this.handleThreePromoted()
-      });
-    // This API call gets all of the readers from the database
-    API.getReaders()
-      .then(res => {
-        // This object holds all properly formatted readers for state
-        let resData = res.data
-        console.log("readers resData", resData)
-
-        this.setState({
-          readers: resData,
-        });
-        // this.handleThreePromoted()
-      });
-
+      // this.setState({
+      //   promotedBooks: this.resDataPromoted,
+      //   readers: this.resDataReaders,
+      // });
+      // this.handleThreePromoted()
   }
 
+  getPromoted = () => {
+    let resDataPromoted = []
+     // This API call gets all of the promoted books from the database
+     API.getPromotedBooks()
+     .then(res => {
+       console.log("getPromotedBooks res.data", res.data)
+       // This array holds all properly formatted promotedBooks objects for state
+       // let resData = []
+
+       for (let i = 0; i < res.data.length; i++) {
+         let promoted = {
+           index: res.data[i].id - 1,
+           id: res.data[i].id,
+           cover: res.data[i].coverImage,
+           title: res.data[i].title,
+           caption: res.data[i].caption,
+           monthPromoted: res.data[i].monthAndYearPromoted,
+           faved: false,
+           clicked: false
+         }
+         resDataPromoted.push(promoted)
+       }
+       // console.log("resData", resData)
+
+       this.setState({
+         promotedBooks: resDataPromoted,
+       }, this.getReaders);
+       
+     });
+  }
+
+  getReaders = () => {
+    let resDataReaders = []
+     // This API call gets all of the readers from the database
+     API.getReaders()
+     .then(res => {
+       console.log("getReaders res.data", res.data)
+       // This object holds all properly formatted readers for state
+       // let resData = []
+
+       for (let i = 0; i < res.data.length; i++) {
+         let reader = {
+           index: res.data[i].id - 1,
+           id: res.data[i].id,
+           firstName: res.data[i].firstName,
+           lastName: res.data[i].lastName,
+           city: res.data[i].city,
+           stateUS: res.data[i].stateUS,
+           gender: res.data[i].gender,
+           ageRange: res.data[i].ageRange,
+           bio: res.data[i].bio,
+           email: res.data[i].email,
+           pass: res.data[i].pass
+         }
+         resDataReaders.push(reader)
+       }
+
+       this.setState({
+         readers: resDataReaders,
+       }, this.handleThreePromoted);
+       
+     });
+  }
+  
   handleLogin = (reader, email) => {
-    this.setState(prevState => ({ 
+    this.setState({ 
       isLoggedIn: true,
       loggedInName: reader,
       loggedInEmail: email,
-    }))
+    })
   }
 
   viewThreePromoted = []
@@ -260,17 +293,20 @@ class App extends Component {
     // filter through promotedBooks for this date
     // set seperate state view branch and pass as prop
 
+    // console.log("<<<<>>>>> handleThreePromoted", this.state)
+    console.log("<<<<>>>>> handleThreePromoted", this.state.promotedBooks[0].monthPromoted)
+    // console.log("<<<<>>>>> handleThreePromoted", this.state.readers[0])
+    console.log("<<<<>>>>> handleThreePromoted", this.state.readers[0].firstName)
+    
     for (let i = 0; i < this.state.promotedBooks.length; i++) {
       this.state.promotedBooks[i].monthPromoted === this.state.promotedBookMonthToDisplay ? this.viewThreePromoted.push(this.state.promotedBooks[i]) : console.log("not promoted")
-
-      // console.log("------this.state.promotedBooks[i].monthPromoted", this.state.promotedBooks[i].monthPromoted)
-      // console.log("------this.state.promotedBookMonthToDisplay", this.state.promotedBookMonthToDisplay)
-      // console.log("------this.viewThreePromoted", this.viewThreePromoted)
     }
     this.setState({
       displayThreePromoted: this.viewThreePromoted,
     });
+    // Empty this array before next nav click
     this.viewThreePromoted = []
+
   }
 
   // This function changes the 'clicked' boolean value for the corresponding book in the state object
@@ -280,9 +316,7 @@ class App extends Component {
 
   // This function sets the month to display in promotedSection component
   handleMonthChange = (arg) => {
-
     let month
-
     if (arg === "prev") {
       month = moment(this.state.promotedBookMonthToDisplay).subtract(1, 'month').format('MM-DD-YYYY')
       console.log("-----prev")
@@ -301,13 +335,15 @@ class App extends Component {
       promotedBookMonthToDisplay: month,
     }, this.handleThreePromoted)
 
-    console.log("after: ", this.state.promotedBookMonthToDisplay)
+    // console.log("after: ", this.state.promotedBookMonthToDisplay)
   }
 
 
   render() {
 
-    // console.log("handleMonthChange: ", this.handleMonthChange)
+    // console.log("<<<< this.state.readers[0]: ", this.state.readers[0])
+    // console.log("<<<< this.state.promotedBooks[i].monthPromoted: ", this.state.promotedBooks[0].monthPromoted)
+    // console.log("<<<<>>>>> handleThreePromoted", this.state.readers[0].email)
 
     return (
       <Router>

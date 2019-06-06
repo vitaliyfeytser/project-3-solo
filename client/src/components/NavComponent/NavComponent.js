@@ -14,6 +14,7 @@ class NavComponent extends Component {
 
     render() {
         console.log("NavComponent props: ", this.props)
+        console.log("NavComponent props: ", this.props.state.readers[0])
         console.log("promotedMonthToDisplay: ", this.props.state.promotedBookMonthToDisplay)
         const clubCountDiv = <div style={{ display: "flex", flexDirection: "row" }}>You joined <div style={{ fontWeight: "bold", margin: "0em .25em" }}>{this.props.state.activeClubs.length}</div> bookclubs</div>
 
@@ -42,7 +43,7 @@ class NavComponent extends Component {
 
                         </Nav>
                         <Nav>
-                            <NavDropdown className="NavBtns" variant="light" title="User Name" id="collasible-nav-dropdown">
+                            <NavDropdown className="NavBtns" variant="light" title={this.props.state.loggedInName} id="collasible-nav-dropdown">
                                 <NavDropdown.Item href="/user">Profile</NavDropdown.Item>
                                 <NavDropdown.Item href="#action/3.2">Logout</NavDropdown.Item>
                                 <NavDropdown.Divider />
@@ -54,6 +55,7 @@ class NavComponent extends Component {
 
                             <SignUpModal />
                             <LoginModal 
+                                currentUser={this.props.state.loggedInName}
                                 readers={this.props.state.readers}
                                 handleLogin={this.props.handleLogin}
                             />
